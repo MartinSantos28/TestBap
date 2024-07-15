@@ -4,7 +4,7 @@ pipeline {
         compose_service_name = "react-jenkins-docker"
         workspace = "https://github.com/MartinSantos28/TestBap.git"  // Ruta al directorio de trabajo en tu instancia EC2
         docker_home = "/usr/bin/docker"  // Ruta al ejecutable de Docker
-        docker_compose_home = "/usr/local/bin/docker-compose"  // Ruta al ejecutable de Docker Compose
+         // Ruta al ejecutable de Docker Compose
     }
     stages {
         stage('Checkout Source') {
