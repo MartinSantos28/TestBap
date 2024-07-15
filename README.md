@@ -75,6 +75,43 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 En esta seccion veremos como configurar una pipeline de Jenkins para desplegar nuestra app
 
+Como primer paso ingresaremos a Jenkins, despues de haber configurado con las opciones predeterminadas de Jenkins ingresaremos al apartado de nueva tarea 
+
 ![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/Jenkinshome.png)
 
+Para despues ingresar los datos de nuestra pipeline, el nombre puede ser cualquiera, pero debemos asegurarnos de escoger la opcion de pipeline como tarea 
+
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/ConfTarea.png)
+
+Para la siguiente parte, nos desplazaremos hasta la opcion que dice GitHub hook trigger for GITScm polling, marcaremos la casilla, como se muestra en la imagen 
+
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/TriggerConf.png)
+
+Nos desplazaremos a la parte de pipeline, donde escogeremos la opcion de Pipilene Script from SCM, en la casilla de SCM seleccionamos GIT para despues ingresar el repositorio de nuestro proyecto 
+
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/GitConf.png)
+
+Seleccionamos la rama main y dejamos el Script path en Jenkinsfile 
+
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/FinalConf.png)
+
+Le daremos en el boton de guardar, lo cual nos va a redirigir a la pagina de la tarea, en esa pantalla, con el boton de Construir ahora, vamos a ejecutar la pipeline 
+
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/TareaHome.png)
+
+Si todo esta bien configurado, nuestra salida de la consola de ejecucion debe de verse asi : 
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/SalidaConsola.png)
+
+### GitHub-WebHook 
+
+Para terminar nuestro trabajo configuraremos el webhook de github, para que cada vez que hagamos un push, si todo esta bien, se active la pipeline de manera automatica 
+
+En nuestro repositorio, iremos a la seccion de Setting -> Webhooks
+En la seccion de Payload Url, pondremos la url de nuestro jenkins junto con /github-webhoo/ es importante tener en cuenta que debe de estar de esta forma.
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/WebHook.png)
+
+Guardaremos nuestro webhook y para realizar la prueba de que todo esta bien, debemos de hacer un push.
+Si las configuraciones son correctas, veremos lo siguiente 
+
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/WebHookOk.png)
 
