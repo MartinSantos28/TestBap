@@ -2,6 +2,7 @@
   "name": "landpage",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -17,9 +18,7 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
     "web-vitals": "^2.1.4"
-    
   },
-  "homepage": "https://martinsantos28.github.io/TestBap/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
