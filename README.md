@@ -1,3 +1,14 @@
+## Cloning the Repository
+
+To get started with this project, you can clone it to your local machine using Git. Follow these steps:
+
+1. Open your terminal.
+
+2. Navigate to the directory where you want to clone the repository.
+
+3. Use the following command to clone the repository: `git clone https://github.com/MartinSantos28/TestBap.git`
+
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
