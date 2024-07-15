@@ -18,7 +18,7 @@
     "react-scroll": "^1.9.0",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "http://ambarte.orionsoftware.com.mx",
+  "homepage": "https://martinsantos28.github.io/TestBap/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
