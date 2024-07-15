@@ -69,3 +69,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 "# TestBap" 
+
+
+### Instrucciones para ejecutar pipeline y desplegar la aplicacion 
+
+En esta seccion veremos como configurar una pipeline de Jenkins para desplegar nuestra app
+
+![Vista home de jenkins](https://raw.githubusercontent.com/MartinSantos28/TestBap/main/ReadMeImages/JenkinsHome.png)
+
+
