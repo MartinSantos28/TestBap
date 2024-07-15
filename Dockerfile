@@ -1,15 +1,26 @@
-# Stage 1:
-    FROM node:14 as builder
-    WORKDIR /app
-    COPY package*.json ./ 
-    RUN npm install
-    COPY . .   
-    RUN npm run build
-     
-    # Stage 2:
-    FROM nginx:1.17.1-alpine
-    COPY --from=builder /app/build /usr/share/nginx/html
-    EXPOSE 80
-    CMD ["nginx", "-g", "daemon off;"]
-    
-    
+# Usa una imagen base de Node.js
+FROM node:14
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /app
+
+
+COPY package*.json ./
+
+
+RUN npm install
+
+
+COPY . .
+
+
+RUN npm run build
+
+
+RUN npm install -g serve
+
+
+EXPOSE 5000
+
+
+CMD ["serve", "-s", "build"]

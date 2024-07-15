@@ -1,27 +1,42 @@
 pipeline {
     agent any
-    environment {
-        compose_service_name = "react-jenkins-docker"
-        workspace = "https://github.com/MartinSantos28/TestBap.git"  // Ruta al directorio de trabajo en tu instancia EC2
-        docker_home = "/usr/bin/docker"  // Ruta al ejecutable de Docker
-         // Ruta al ejecutable de Docker Compose
-    }
+
     stages {
-        stage('Checkout Source') {
-        }
-        stage('Docker Compose Build') {
+        stage('Checkout') {
             steps {
-                dir("${workspace}") {
-                    sh "${docker_compose_home} build --no-cache ${compose_service_name}"
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build('nombre-del-repositorio/imagen-nodo:latest', '-f Dockerfile .')
                 }
             }
         }
-        stage('Docker Compose Up') {
+
+        stage('Run Tests') {
             steps {
-                dir("${workspace}") {
-                    sh "${docker_compose_home} up --no-deps -d ${compose_service_name}"
+                script {
+                    dockerImage.inside {
+                        sh 'npm install'
+                        sh 'npm test'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    dockerImage.inside {
+                        sh 'npm run build'
+                    }
                 }
             }
         }
     }
+
 }
+
