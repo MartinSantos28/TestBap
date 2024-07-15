@@ -88,3 +88,16 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 3. Save your webhook. Test it by pushing to your repository. If configured correctly, you should see:
 
    ![Webhook Test](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/WebHookOk.png)
+
+---
+### Considerations
+
+1. Please ensure that dependencies align with the specified Node.js version.
+2. This application uses Heroku. If another technology is used, necessary adjustments in the Jenkinsfile should be considered.
+
+
+---
+### Links 
+
+1. https://martinsantos-react.s3.amazonaws.com/index.html
+2. https://reacttechnicaltest-936171411409.herokuapp.com
