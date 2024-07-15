@@ -1,19 +1,31 @@
 pipeline {
-    agent any
-    tools {nodejs "Node20"}
+    agent {
+        label 'agent-via-ssh'
+    }
+    environment {
+        compose_service_name = "react-jenkins-docker"
+        workspace = "/home/jenkins/project/react-jenkins-docker/"
+    }
     stages {
-        stage('Build') {
+        stage('Checkout Source') {
             steps {
-                sh 'npm install'
+                ws("${workspace}") {
+                    checkout scm
+                }
             }
         }
-        stage('Deliver') {
+        stage('Docker Comopse Build') {
             steps {
-                sh 'chmod -R +rwx ./jenkins/scripts/deliver.sh'
-                sh 'chmod -R +rwx ./jenkins/scripts/kill.sh'
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                ws("${workspace}"){
+                    sh "docker compose build --no-cache ${compose_service_name}"
+                }
+            }
+        }
+        stage('Docker Comopse Up') {
+            steps {
+                ws("${workspace}"){
+                    sh "docker compose up --no-deps -d ${compose_service_name}"
+                }
             }
         }
     }

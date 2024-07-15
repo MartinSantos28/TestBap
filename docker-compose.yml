@@ -1,12 +1,9 @@
-version: '3.8'
-
+version: '3'
 services:
-  react-app:
-    image: test-landing-page
+  react-jenkins-docker:
+    container_name: react-jenkins-docker
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-    environment:
-      NODE_ENV: production
+      - "8080:80"
