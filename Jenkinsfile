@@ -5,7 +5,7 @@ pipeline {
   }
   environment {
     HEROKU_API_KEY = credentials('heroku-api-key')
-    IMAGE_NAME = 'TestReact/jenkins-example-react'
+    IMAGE_NAME = 'TestReact/reacttechnicaltest'
     IMAGE_TAG = 'latest'
     APP_NAME = 'reacttechnicaltest'
   }
