@@ -23,7 +23,7 @@ pipeline {
                 script {
                     
                     docker.image("test-landing").inside {
-                        sh 'docker-compose up -d'
+                        sh 'docker-compose up -d    '
                     }
                 }
             }
