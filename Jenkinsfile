@@ -4,16 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                
-                git 'https://github.com/MartinSantos28/TestBap.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/MartinSantos28/TestBap.git']]])
             }
         }
         
         stage('Build') {
             steps {
                 script {
-                    
-                    sh 'docker-compose build'
+                    docker.build("test-landing", ".")
                 }
             }
         }
@@ -21,9 +19,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    
                     docker.image("test-landing").inside {
-                        sh 'docker-compose up -d    '
+                        sh 'docker-compose up -d'
                     }
                 }
             }
@@ -32,8 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    
-                    sh 'docker run -d -p 5000:5000 test-landing'
+                    docker.image("test-landing").run("-p 5000:5000")
                 }
             }
         }
