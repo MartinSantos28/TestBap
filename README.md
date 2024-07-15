@@ -75,6 +75,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 En esta seccion veremos como configurar una pipeline de Jenkins para desplegar nuestra app
 
-![Vista home de jenkins](https://raw.githubusercontent.com/MartinSantos28/TestBap/main/ReadMeImages/JenkinsHome.png)
+![Vista home de jenkins](https://github.com/MartinSantos28/TestBap/blob/main/ReadMeImages/Jenkinshome.png)
 
 
