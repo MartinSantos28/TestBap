@@ -8,11 +8,6 @@ pipeline {
     }
     stages {
         stage('Checkout Source') {
-            steps {
-                dir("${workspace}") {
-                    git branch: 'main', credentialsId: 'your-credentials-id', url: 'https://github.com/MartinSantos28/TestBap.git'
-                }
-            }
         }
         stage('Docker Compose Build') {
             steps {
