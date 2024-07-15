@@ -1,36 +1,19 @@
 pipeline {
     agent any
-
+    tools {nodejs "NODEJS"}
     stages {
-        stage('Checkout') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/MartinSantos28/TestBap.git']]])
-            }
-        }
-        
         stage('Build') {
             steps {
-                script {
-                    docker.build("test-landing", ".")
-                }
+                sh 'npm install'
             }
         }
-
-        stage('Test') {
+        stage('Deliver') {
             steps {
-                script {
-                    docker.image("test-landing").inside {
-                        sh 'docker-compose up -d'
-                    }
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                script {
-                    docker.image("test-landing").run("-p 5000:5000")
-                }
+                sh 'chmod -R +rwx ./jenkins/scripts/deliver.sh'
+                sh 'chmod -R +rwx ./jenkins/scripts/kill.sh'
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
