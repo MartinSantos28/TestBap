@@ -2,16 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build('nombre-del-repositorio/imagen-nodo:latest', '-f Dockerfile .')
+                    dockerImage = docker.build('https://github.com/MartinSantos28/TestBap.git/imagen-nodo:latest', '-f Dockerfile .')
                 }
             }
         }
