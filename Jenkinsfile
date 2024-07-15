@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout Source') {
             steps {
                 dir("${workspace}") {
-                    git branch: 'main', credentialsId: 'your-credentials-id', url: 'https://github.com/yourusername/your-repo.git'
+                    git branch: 'main', credentialsId: 'your-credentials-id', url: 'https://github.com/MartinSantos28/TestBap.git'
                 }
             }
         }
