@@ -1,26 +1,16 @@
-# Usa una imagen base de Node.js
-FROM node:14
+from node:14.0.0 AS build
+WORKDIR /build
 
-# Establece el directorio de trabajo en el contenedor
-WORKDIR /app
+COPY  package.json package.json 
+COPY  package-lock.json package-lock.json
+RUN  npm ci 
 
-
-COPY package*.json ./
-
-
-RUN npm install
-
-
-COPY . .
-
-
+COPY public/ public
+COPY src/ src
 RUN npm run build
 
-
-RUN npm install -g serve
-
-
-EXPOSE 5000
-
-
-CMD ["serve", "-s", "build"]
+FROM httpd:alpine  
+WORKDIR /usr/local/apache2/htdocs/
+COPY --from=build /build/build/ .
+RUN chown -R www-data:www-data /usr/local/apache2/htdocs/ \
+    && sed -i 's#Listen 80#Listen \${PORT}/g' /usr/local/apache2/conf/httpd.conf
